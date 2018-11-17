@@ -13,17 +13,10 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-
 @Entity // This tells Hibernate to make a table out of this class
 @Table(name = "user") // This tells Hibernate to name the table as User and not User
 @DynamicInsert(true)
 @DynamicUpdate(true)
-@Getter
-@Setter
 public class User {
 
 	public User() {
@@ -82,4 +75,53 @@ public class User {
 	@Size(min = 2, message = "Last Name should at least have 2 characters")
 	@Size(max = 15, message = "Last Name should not exceed 15 characters")
 	private String lastName;
+
+	public Integer getId() {
+		return id;
+	}
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 }
