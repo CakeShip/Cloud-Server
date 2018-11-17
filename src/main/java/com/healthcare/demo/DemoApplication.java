@@ -30,7 +30,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  */
 @EnableAutoConfiguration(exclude = { SecurityAutoConfiguration.class })
 @SpringBootApplication
-@EnableJpaRepositories(basePackages = "com.rococo.springboot")
+@EnableJpaRepositories(basePackages = "com.healthcare.demo")
 @EnableJpaAuditing
 public class DemoApplication extends SpringBootServletInitializer {
 	public static void main(String[] args) {
@@ -52,7 +52,7 @@ public class DemoApplication extends SpringBootServletInitializer {
 		LocalContainerEntityManagerFactoryBean bean = new LocalContainerEntityManagerFactoryBean();
 		bean.setDataSource(dataSource);
 		bean.setJpaVendorAdapter(jpaVendorAdapter);
-		bean.setPackagesToScan("com.rococo.springboot");
+		bean.setPackagesToScan("com.healthcare.demo");
 		return bean;
 	}
 
