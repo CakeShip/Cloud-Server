@@ -26,8 +26,6 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findById(UserModel.getId()).get();
 	}
 
-	
-
 	@Override
 	@Transactional(rollbackOn = Exception.class)
 	public User getPersonByUsernamePassword(String username,String password){

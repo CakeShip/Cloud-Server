@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity // This tells Hibernate to make a table out of this class
-@Table(name = "user") // This tells Hibernate to name the table as User and not UserModel
+@Table(name = "user2") // This tells Hibernate to name the table as User and not UserModel
 public class UserModel {
 	
 	@Id
