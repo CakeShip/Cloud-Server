@@ -8,10 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToMany;
-import javax.persistence.JoinColumn;
 import java.util.List;
-import javax.persistence.FetchType;
 
 import org.hibernate.annotations.Where;
 

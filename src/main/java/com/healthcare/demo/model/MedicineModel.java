@@ -32,11 +32,13 @@ public class MedicineModel {
 	@Column(name = "MedicineName", nullable = false)
     private String MedicineName;
     
-	@Column(name = "price", nullable = false)
+	@Column(name = "Price", nullable = false)
     private float Price;
 
     @ManyToOne
-	@JoinColumn(name = "disease_id")
-	private DiseaseModel diseasemodel;
-	
+	@JoinColumn(name = "diseasemodel")
+    private DiseaseModel diseasemodel;
+    
+    @Column(name = "isArchived")
+    private Boolean isArchived;	
 }

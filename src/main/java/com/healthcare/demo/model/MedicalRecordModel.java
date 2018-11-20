@@ -32,26 +32,29 @@ public class MedicalRecordModel {
 	private Integer id; 
 
 	@Size(max = 255, message = "The patient name should not exceed 255 characters")
-	@Column(name = "name", nullable = false)
+	@Column(name = "Name", nullable = false)
 	private String Name;
 
-	@Column(name = "birthday", nullable = false)
+	@Column(name = "Birthday", nullable = false)
 	private Date Birthday;
 
 	@Size(max = 255, message = "The patient name should not exceed 255 characters")
-	@Column(name = "sex")
+	@Column(name = "Sex")
 	private String Sex;
 
-	@Column(name = "admission_date", nullable = false)
+	@Column(name = "Admission_Date", nullable = false)
 	private Date Admission_Date;
 
-	@Column(name = "discharge_date")
+	@Column(name = "Discharge_Date")
 	private Date Discharge_Date;
 
 	@ManyToOne
-	@JoinColumn(name = "disease_id", nullable = false)
+	@JoinColumn(name = "Diseases", nullable = false)
 	private MedicineModel Diseases;
 
-	@Column(name = "total_bill", nullable = false)
+	@Column(name = "TotalBill", nullable = false)
 	private float TotalBill;
+	
+    @Column(name = "isArchived")
+    private Boolean isArchived;
 }
