@@ -21,14 +21,14 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity // This tells Hibernate to make a table out of this class
-@Table(name = "medical_record") // This tells Hibernate to name the table as User and not User
+@Table(name = "MedicalRecordModel") // This tells Hibernate to name the table as User and not User
 @DynamicInsert(true)
 @DynamicUpdate(true)
 public class MedicalRecordModel {
 
 	@Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "medical_record_id",unique=true, nullable=false)
+    @Column(name = "id",unique=true, nullable=false)
 	private Integer id; 
 
 	@Size(max = 255, message = "The patient name should not exceed 255 characters")

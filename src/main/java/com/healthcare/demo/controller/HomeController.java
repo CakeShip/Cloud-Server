@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.healthcare.demo.controller;
 
 import java.util.List;
@@ -21,10 +18,6 @@ import com.healthcare.demo.model.LoginModel;
 import com.healthcare.demo.model.User;
 import com.healthcare.demo.service.UserServiceImpl;
 
-/**
- * @author Anthony
- *
- */
 @RestController
 @RequestMapping("/users")
 @CrossOrigin(value = "http://localhost:4200/")
@@ -60,14 +53,7 @@ public class HomeController {
 	public @ResponseBody String register( @RequestBody User person) {
 		// @ResponseBody means the returned String is the response, not a view name
 		// @RequestParam means it is a parameter from the GET or POST request
-		userService.registerPerson(person);
-		return "Saved";
-	}
-
-	@PostMapping(value = "/register") // Map ONLY POST Requests
-	public @ResponseBody String updateUserDet( @RequestBody User person) {
-		// @ResponseBody means the returned String is the response, not a view name
-		// @RequestParam means it is a parameter from the GET or POST request
+		person.setIsArchived(false);
 		userService.registerPerson(person);
 		return "Saved";
 	}

@@ -30,7 +30,4 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	@Query("SELECT u FROM User u WHERE u.firstName LIKE (:name) OR u.lastName LIKE (:name)")
 	User findPersonDetailsByName(@Param("name") String name);
 
-
-
-
 }
