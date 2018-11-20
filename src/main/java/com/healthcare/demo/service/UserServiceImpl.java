@@ -21,10 +21,10 @@ public class UserServiceImpl implements UserService {
 	@Autowired
 	private  UserAbilityRepository userAbilityRepository;
 	
-	@Override
-	public User getPersonInfo(User UserModel) {
-		return userRepository.findById(UserModel.getId()).get();
-	}
+	// @Override
+	// public User getPersonInfo(User UserModel) {
+	// 	return userRepository.findById(UserModel.getId()).get();
+	// }
 
 	@Override
 	@Transactional(rollbackOn = Exception.class)
@@ -46,6 +46,21 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void registerPerson(User UserModel) {
 		userRepository.save(UserModel);
+	}
+
+	@Override
+	public void deleteUser(int id){
+		userRepository.deleteUserById(id);
+	}
+
+	@Override
+	public User getPersonById(int id){
+		return userRepository.findPersonById(id); 
+	}
+	
+	@Override
+	public User updatePersonById(int id, User update_user){
+		return userRepository.updatePersonDetailsById(id, update_user); 
 	}
 
 }
