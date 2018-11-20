@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.healthcare.demo.model.*;
 
 @Repository
-public interface MedicalRecordRepository extends JpaRepository<User, Integer> {
+public interface MedicalRecordRepository extends JpaRepository<MedicalRecordModel, Integer> {
 //	User deleteMedicalRecordById(int id);
 	@Query("UPDATE MedicalRecordModel u SET u.isArchived=true WHERE u.id=(:id)")
 	User deleteMedicalRecordById(@Param("id") int id);
