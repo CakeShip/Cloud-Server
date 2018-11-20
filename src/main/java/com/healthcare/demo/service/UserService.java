@@ -12,4 +12,5 @@ public interface UserService {
 	public User getPersonById(int id);
 	public void deleteUser(int id);
 	public User updatePersonById(int id, User updated_person);
+	public User findPersonByName(String name);
 }

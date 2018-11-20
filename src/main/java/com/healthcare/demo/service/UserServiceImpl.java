@@ -63,4 +63,8 @@ public class UserServiceImpl implements UserService {
 		return userRepository.updatePersonDetailsById(id, update_user); 
 	}
 
+	@Override
+	public User findPersonByName(String name){
+		return userRepository.findPersonDetailsByName(name);
+	}
 }
