@@ -2,7 +2,7 @@ package com.healthcare.demo.service;
 
 import java.util.List;
 
-import com.healthcare.demo.model.*;
+import com.healthcare.demo.model.User;
 
 public interface UserService {
 

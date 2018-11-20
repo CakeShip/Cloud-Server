@@ -6,7 +6,6 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import com.healthcare.demo.model.*;
-import com.healthcare.demo.model.*;;
 
 @Repository
 public interface UserAbilityRepository extends JpaRepository<UserAbility, Integer> {
