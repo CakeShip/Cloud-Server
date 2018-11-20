@@ -91,8 +91,7 @@ public class User {
 	@Size(max = 15, message = "Last Name should not exceed 15 characters")
 	private String lastName;
 
-	@NotNull
-	@NotEmpty
+	@Column(name = "isArchived", nullable = false)
 	private Boolean isArchived;
 
 	// public Integer getId() {
