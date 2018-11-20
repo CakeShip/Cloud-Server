@@ -24,6 +24,10 @@ import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+
 /**
  * @author Anthony
  *
@@ -69,6 +73,17 @@ public class DemoApplication extends SpringBootServletInitializer {
 					.allowedHeaders("*");
 		}
 	}
-
+	
+	@EnableWebSecurity
+	@Configuration
+	public class SecurityConfig extends WebSecurityConfigurerAdapter {		
+		@Override
+		protected void configure(HttpSecurity http) throws Exception {
+			http.authorizeRequests().anyRequest().permitAll();
+			http
+				// ...
+				.csrf().disable();
+		}
+	}
 
 }
