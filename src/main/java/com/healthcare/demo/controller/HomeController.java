@@ -63,6 +63,14 @@ public class HomeController {
 		userService.registerPerson(person);
 		return "Saved";
 	}
+
+	@PostMapping(value = "/register") // Map ONLY POST Requests
+	public @ResponseBody String updateUserDet( @RequestBody User person) {
+		// @ResponseBody means the returned String is the response, not a view name
+		// @RequestParam means it is a parameter from the GET or POST request
+		userService.registerPerson(person);
+		return "Saved";
+	}
 //
 	@GetMapping(path = "/getAll")
 	public @ResponseBody List<User> getAllUsers() {

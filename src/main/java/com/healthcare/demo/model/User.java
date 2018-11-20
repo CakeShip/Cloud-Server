@@ -13,6 +13,12 @@ import javax.validation.constraints.Size;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+
 @Entity // This tells Hibernate to make a table out of this class
 @Table(name = "user") // This tells Hibernate to name the table as User and not User
 @DynamicInsert(true)
@@ -26,6 +32,7 @@ public class User {
 			@NotEmpty @Size(min = 2, message = "Username should at least have 2 characters") @Size(max = 15, message = "Username should not exceed 15 characters") String username,
 			@NotEmpty @Size(min = 2, message = "Password should at least have 2 characters") @Size(max = 15, message = "Password should not exceed 15 characters") String password,
 			@NotNull @NotEmpty @Size(min = 2, message = "First Name should at least have 2 characters") @Size(max = 15, message = "FirstName should not exceed 15 characters") String firstName,
+			@NotEmpty @NotEmpty @Size(min = 2, message = "Last Name should at least have 2 characters") @Size(max = 15, message = "Last Name should not exceed 15 characters") String usertype,
 			@NotNull @NotEmpty @Size(min = 2, message = "Last Name should at least have 2 characters") @Size(max = 15, message = "Last Name should not exceed 15 characters") String lastName) {
 		super();
 		this.id = id;
@@ -34,6 +41,8 @@ public class User {
 		this.password = password;
 		this.firstName = firstName;
 		this.lastName = lastName;
+		this.usertype = usertype;
+		this.isArchived = false;
 	}
 
 	public User(
@@ -59,6 +68,12 @@ public class User {
 	private String username;
 
 	@NotEmpty
+	@Size(min = 2, message = "UserType should at least have 2 characters")
+	@Size(max = 15, message = "UserType should not exceed 15 characters")
+	@Column(name = "usertype", nullable = false, updatable = false)
+	private String usertype;
+
+	@NotEmpty
 	@Size(min = 2, message = "Password should at least have 2 characters")
 	@Size(max = 15, message = "Password should not exceed 15 characters")
 	@Column(name = "password", nullable = false, updatable = false)
@@ -76,52 +91,56 @@ public class User {
 	@Size(max = 15, message = "Last Name should not exceed 15 characters")
 	private String lastName;
 
-	public Integer getId() {
-		return id;
-	}
+	@NotNull
+	@NotEmpty
+	private Boolean isArchived;
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+	// public Integer getId() {
+	// 	return id;
+	// }
 
-	public String getEmail() {
-		return email;
-	}
+	// public void setId(Integer id) {
+	// 	this.id = id;
+	// }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	// public String getEmail() {
+	// 	return email;
+	// }
 
-	public String getUsername() {
-		return username;
-	}
+	// public void setEmail(String email) {
+	// 	this.email = email;
+	// }
 
-	public void setUsername(String username) {
-		this.username = username;
-	}
+	// public String getUsername() {
+	// 	return username;
+	// }
 
-	public String getPassword() {
-		return password;
-	}
+	// public void setUsername(String username) {
+	// 	this.username = username;
+	// }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+	// public String getPassword() {
+	// 	return password;
+	// }
 
-	public String getFirstName() {
-		return firstName;
-	}
+	// public void setPassword(String password) {
+	// 	this.password = password;
+	// }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+	// public String getFirstName() {
+	// 	return firstName;
+	// }
 
-	public String getLastName() {
-		return lastName;
-	}
+	// public void setFirstName(String firstName) {
+	// 	this.firstName = firstName;
+	// }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+	// public String getLastName() {
+	// 	return lastName;
+	// }
+
+	// public void setLastName(String lastName) {
+	// 	this.lastName = lastName;
+	// }
 
 }
