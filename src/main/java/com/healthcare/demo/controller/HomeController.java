@@ -79,6 +79,11 @@ public class HomeController {
 		return userService.getAll();
 	}
 
+	@GetMapping(path = "/getAll/{type}")
+	public @ResponseBody List<User> getAllUserType(@PathVariable String type) {
+		return userService.getAllUserType(type);
+	}
+
 	@PostMapping(path = "/delete/{id}")
 	public @ResponseBody String delete(@PathVariable int id) {
 		userService.deleteUser(id);

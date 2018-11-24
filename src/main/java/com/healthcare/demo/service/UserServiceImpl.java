@@ -67,4 +67,9 @@ public class UserServiceImpl implements UserService {
 		firstname=lastname=name;
 		return userRepository.findByFirstNameOrLastName(firstname, lastname);
 	}
+
+	@Override
+	public List<User> getAllUserType(String type){
+		return userRepository.findByUsertype(type);
+	}
 }
