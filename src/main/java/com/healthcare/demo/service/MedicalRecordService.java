@@ -11,5 +11,5 @@ public interface MedicalRecordService {
 	public MedicalRecordModel findById(int id);
 	public void deleteById(int id);
 	public void restoreById(int id);
-	public MedicalRecordModel updateById(int id, MedicalRecordModel diseaseModel);
+	public Integer updateById(int id, MedicalRecordModel diseaseModel);
 }

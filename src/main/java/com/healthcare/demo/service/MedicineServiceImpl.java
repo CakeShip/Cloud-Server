@@ -50,7 +50,7 @@ public class MedicineServiceImpl implements MedicineService {
 		medicineRepository.save(model);
 	}
 	@Override
-	public MedicineModel updateById(int id, MedicineModel update) {
+	public Integer updateById(int id, MedicineModel update) {
 		return medicineRepository.updateById(id, update);
 	}
 }

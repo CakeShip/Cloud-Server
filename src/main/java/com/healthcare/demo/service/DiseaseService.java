@@ -11,5 +11,5 @@ public interface DiseaseService {
 	public DiseaseModel findById(int id);
 	public void deleteById(int id);
 	public void restoreById(int id);
-	public DiseaseModel updateById(int id, DiseaseModel diseaseModel);
+	public Integer updateById(int id, DiseaseModel diseaseModel);
 }
