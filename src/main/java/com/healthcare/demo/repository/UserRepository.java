@@ -19,10 +19,6 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	User findByUsernameAndPassword(String username, String password);
 	User findById(int id);
 
-	//  User deleteUserById(int id);
-	@Query("UPDATE User u SET u.isArchived=true WHERE u.id=(:id)")
-	User deleteUserById(@Param("id") int id);
-
 	// User findPersonById(int id, User update_person);
 	@Query("UPDATE User u SET u.username=:#{#update_person.username},u.password=:#{#update_person.password},u.email=:#{#update_person.email},u.firstName=:#{#update_person.firstName},u.lastName=:#{#update_person.lastName} WHERE u.id=(:id)")
 	User updatePersonDetailsById(@Param("id") int id, @Param("update_person") User update_person);

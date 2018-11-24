@@ -11,6 +11,6 @@ public interface UserService {
 	public User getPersonByUsernamePassword(String username, String pass);
 	public User getPersonById(int id);
 	public void deleteUser(int id);
-	public User updatePersonById(int id, User updated_person);
+	public User updatePersonById(int id, User model);
 	public List<User> findPersonByName(String name);
 }

@@ -38,7 +38,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void deleteUser(int id){
-		userRepository.deleteUserById(id);
+		User model = UserRepository.findById(id);
+		model.setIsArchived(true);
 	}
 
 	@Override
@@ -47,8 +48,8 @@ public class UserServiceImpl implements UserService {
 	}
 	
 	@Override
-	public User updatePersonById(int id, User update_user){
-		return userRepository.updatePersonDetailsById(id, update_user); 
+	public User updatePersonById(int id, User model){
+		return userRepository.updatePersonDetailsById(id, model); 
 	}
 
 	@Override

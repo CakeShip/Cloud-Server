@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.validation.Valid;
 
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,7 +35,6 @@ public class HomeController {
 	public @ResponseBody User login(@RequestParam("username") String username,
 			@RequestParam("password") String password) {
 		return userService.getPersonByUsernamePassword(username, password);
-
 	}
 
 	@PostMapping("/authenticate")
@@ -55,6 +55,27 @@ public class HomeController {
 	@GetMapping(path = "/getAll")
 	public @ResponseBody List<User> getAllUsers() {
 		return userService.getAll();
+	}
+
+	@PostMapping(path = "/delete/{id}")
+	public @ResponseBody String delete(int id) {
+		userService.deleteUser(id);
+		return "deleted";
+	}
+
+	@GetMapping(path = "/{id}")
+	public @ResponseBody User getDetailById(@PathVariable int id) {
+		return userService.getPersonById(id);
+	}
+
+	@PostMapping(path = "/update/{id}")
+	public @ResponseBody User update(@RequestBody User person, @PathVariable int id) {
+		return userService.updatePersonById(id, person);
+	}
+
+	@GetMapping(path = "/search/{name}")
+	public @ResponseBody List<User> update(@PathVariable String name) {
+		return userService.findPersonByName(name);
 	}
 
 }
