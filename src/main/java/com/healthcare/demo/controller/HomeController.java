@@ -66,7 +66,7 @@ public class HomeController {
 	@PostMapping(path = "/restore/{id}")
 	public @ResponseBody String restore(int id) {
 		userService.restoreUser(id);
-		return "deleted";
+		return "Re-created";
 	}
 
 	@GetMapping(path = "/{id}")
