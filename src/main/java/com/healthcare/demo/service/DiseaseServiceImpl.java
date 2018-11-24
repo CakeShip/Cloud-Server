@@ -49,9 +49,4 @@ public class DiseaseServiceImpl implements DiseaseService {
 	public DiseaseModel updateById(int id, DiseaseModel update) {
 		return diseaseRepository.updateById(id, update);
 	}
-	
-	@Override
-	public List<DiseaseModel> findByDiseaseNameContaining(String diseaseName) {
-		return diseaseRepository.findByDiseaseNameContaining(diseaseName);
-	}
 }

@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import javax.persistence.OneToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 
@@ -27,9 +28,9 @@ import lombok.Setter;
 public class MedicalRecordModel {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id",unique=true, nullable=false)
-	private Integer id; 
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", unique = true, nullable = false)
+	private Integer id;
 
 	@Size(max = 255, message = "The patient name should not exceed 255 characters")
 	@Column(name = "Name", nullable = false)
@@ -48,13 +49,12 @@ public class MedicalRecordModel {
 	@Column(name = "Discharge_Date")
 	private Date Discharge_Date;
 
-	@ManyToOne
-	@JoinColumn(name = "Diseases", nullable = false)
-	private MedicineModel Diseases;
+	@OneToMany
+    private List<DiseaseModel> diseaseModels;
 
 	@Column(name = "TotalBill", nullable = false)
 	private float TotalBill;
-	
-    @Column(name = "isArchived")
-    private Boolean isArchived;
+
+	@Column(name = "isArchived")
+	private Boolean isArchived;
 }

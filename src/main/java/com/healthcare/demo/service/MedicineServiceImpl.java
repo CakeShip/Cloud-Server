@@ -47,8 +47,4 @@ public class MedicineServiceImpl implements MedicineService {
 	public MedicineModel updateById(int id, MedicineModel update) {
 		return medicineRepository.updateById(id, update);
 	}
-	@Override
-	public List<MedicineModel> findByMedicineNameContaining(String medicineName) {
-		return medicineRepository.findByMedicineNameContaining(medicineName);
-	}
 }

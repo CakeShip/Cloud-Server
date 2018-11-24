@@ -32,15 +32,15 @@ import lombok.Setter;
 public class DiseaseModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id",unique=true, nullable=false)
-	private Integer id; 
+    @Column(name = "id", unique = true, nullable = false)
+    private Integer id;
 
-	@Size(max = 255, message = "The disease name should not exceed 255 characters")
-	@Column(name = "diseaseName", nullable = false)
-	private String diseaseName;	
+    @Size(max = 255, message = "The disease name should not exceed 255 characters")
+    @Column(name = "diseaseName", nullable = false)
+    private String diseaseName;
 
     @Column(name = "isArchived")
-	private Boolean isArchived;
+    private Boolean isArchived;
 
     @OneToMany
     private List<MedicineModel> medicinemodel;
