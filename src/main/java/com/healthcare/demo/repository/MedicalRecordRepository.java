@@ -16,6 +16,6 @@ public interface MedicalRecordRepository extends JpaRepository<MedicalRecordMode
 	List<MedicalRecordModel> findAll();
     MedicalRecordModel findById(int id);
 
-	@Query("UPDATE MedicalRecordModel u SET u.Name=:#{#update.Name},u.Birthday=:#{#update.Birthday},u.Sex=:#{#update.Sex},u.Admission_Date=:#{#update.Admission_Date},u.Discharge_Date=:#{#update.Discharge_Date},u.Name=:#{#update.Name},u.Name=:#{#update.Name},u.TotalBill=:#{#update.TotalBill} WHERE u.id=(:id)")
+	@Query("UPDATE MedicalRecordModel u SET u.name=:#{#update.name},u.birthday=:#{#update.birthday},u.sex=:#{#update.sex},u.admissionDate=:#{#update.admissionDate},u.dischargeDate=:#{#update.dischargeDate}, u.totalBill=:#{#update.totalBill} WHERE u.id=(:id)")
     MedicalRecordModel updateById(@Param("id") int id, @Param("update") MedicalRecordModel update);
 }
