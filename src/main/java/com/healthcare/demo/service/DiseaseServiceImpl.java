@@ -53,7 +53,7 @@ public class DiseaseServiceImpl implements DiseaseService {
 	}
 
 	@Override
-	public DiseaseModel updateById(int id, DiseaseModel update) {
+	public Integer updateById(int id, DiseaseModel update) {
 		return diseaseRepository.updateById(id, update);
 	}
 }

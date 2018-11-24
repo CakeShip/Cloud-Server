@@ -4,6 +4,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.Modifying;
 
 import java.util.List;
 
@@ -15,7 +16,8 @@ import com.healthcare.demo.model.DiseaseModel;
 public interface DiseaseRepository extends JpaRepository<DiseaseModel, Integer> {
     List<DiseaseModel> findAll();
     DiseaseModel findById(int id);
-
+   
+    @Modifying
     @Query("UPDATE DiseaseModel u SET u.diseaseName=:#{#update.diseaseName}, u.medicinemodel=:#{#update.medicinemodel} WHERE u.id=(:id)")
-    DiseaseModel updateById(@Param("id") int id, @Param("update") DiseaseModel update);
+    Integer updateById(@Param("id") int id, @Param("update") DiseaseModel update);
 }
