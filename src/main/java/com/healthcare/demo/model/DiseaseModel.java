@@ -34,7 +34,7 @@ public class DiseaseModel {
 
 	@Size(max = 255, message = "The disease name should not exceed 255 characters")
 	@Column(name = "DiseaseName", nullable = false)
-	private String DiseaseName;	
+	private String diseaseName;	
 
     @Column(name = "isArchived")
 	private Boolean isArchived;

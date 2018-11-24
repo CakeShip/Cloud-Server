@@ -14,8 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.healthcare.demo.model.LoginModel;
-import com.healthcare.demo.model.User;
+import com.healthcare.demo.model.*;
 import com.healthcare.demo.service.UserServiceImpl;
 
 @RestController

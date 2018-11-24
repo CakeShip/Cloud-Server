@@ -5,6 +5,10 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import com.healthcare.demo.model.*;
 
 @Repository
@@ -24,4 +28,7 @@ public interface MedicalRecordRepository extends JpaRepository<MedicalRecordMode
 //	User findMedicalRecordModelByName(int id, User update_person);
 	@Query("SELECT u FROM MedicalRecordModel u WHERE u.Name LIKE (:name)")
 	User findMedicalRecordModelByName(@Param("name") String name);
+
+	
+	List<MedicalRecordModel> findAll();
 }

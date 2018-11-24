@@ -5,7 +5,11 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
-import com.healthcare.demo.model.*;
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.healthcare.demo.model.MedicineModel;
 
 @Repository
 public interface MedicineRepository extends JpaRepository<MedicineModel, Integer> {
@@ -17,11 +21,19 @@ public interface MedicineRepository extends JpaRepository<MedicineModel, Integer
 // 	@Query("SELECT u FROM MedicineModel u WHERE u.id=(:id)")
 // 	User findMedicineModelById(@Param("id") int id);
 
-// //	User updateMedicineModelDetailsById(int id, User update_person);
-// 	@Query("UPDATE MedicineModel u SET u.MedicineName=:#{#update.MedicineName}, u.Price=:#{#update.Price}, u.diseasemodel=:#{#update.diseasemodel} WHERE u.id=(:id)")
-// 	User updateMedicineModelDetailsById(@Param("id") int id, @Param("update") MedicineModel update);
+//	User updateMedicineModelDetailsById(int id, User update_person);
+	// @Query("UPDATE MedicineModel u SET u.MedicineName=:#{#update.MedicineName}, u.Price=:#{#update.Price}, u.diseasemodel=:#{#update.diseasemodel} WHERE u.id=(:id)")
+	// User updateMedicineModelDetailsById(@Param("id") int id, @Param("update") MedicineModel update);
 	
 // //	User findMedicineModelByName(int id, User update_person);
 // 	@Query("SELECT u FROM MedicineModel u WHERE u.MedicineName LIKE (:name)")
 // 	User findMedicineModelByName(@Param("name") String name);
+
+    List<MedicineModel> findAll();
+    List<MedicineModel> findById(int id);
+    List<MedicineModel> findByMedicineNameContaining(String medicineName);
+    
+    @Query("UPDATE MedicineModel u SET u.medicineName=:#{#update.medicineName}, u.price=:#{#update.price} WHERE u.id=(:id)")
+    MedicineModel updateById(@Param("id") int id, @Param("update") MedicineModel update);
+
 }

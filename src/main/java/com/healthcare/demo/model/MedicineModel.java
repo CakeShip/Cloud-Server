@@ -33,11 +33,11 @@ public class MedicineModel {
 	private Integer id; 
 
     @Size(max = 255, message = "The medicine name should not exceed 255 characters")
-	@Column(name = "MedicineName", nullable = false)
-    private String MedicineName;
+	@Column(name = "medicineName", nullable = false)
+    private String medicineName;
     
-	@Column(name = "Price", nullable = false)
-    private float Price;
+	@Column(name = "price", nullable = false)
+    private float price;
     
     @Column(name = "isArchived")
     private Boolean isArchived;	
