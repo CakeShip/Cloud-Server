@@ -12,4 +12,5 @@ public interface DiseaseService {
 	public void deleteById(int id);
 	public void restoreById(int id);
 	public Integer updateById(int id, DiseaseModel diseaseModel);
+	public List<DiseaseModel> findbyDiseaseName(String name);
 }

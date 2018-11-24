@@ -56,4 +56,9 @@ public class DiseaseServiceImpl implements DiseaseService {
 	public Integer updateById(int id, DiseaseModel update) {
 		return diseaseRepository.updateById(id, update);
 	}
+
+	@Override
+	public List<DiseaseModel> findbyDiseaseName(String diseaseName){
+		return diseaseRepository.findByDiseaseName(diseaseName);
+	}
 }
