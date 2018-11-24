@@ -55,9 +55,8 @@ public class HomeController {
 
 	}
 
-	@PostMapping(value = "/register")
-	public @ResponseBody String register(@RequestBody User person) {
-
+	@PostMapping(value = "/register/{type}")
+	public @ResponseBody String register(@RequestBody User person, @PathVariable String type) {
 		try{
 			EncryptFiles enc = new EncryptFiles();
 			String encrypted=enc.encrypt(person.getPassword());
@@ -65,6 +64,7 @@ public class HomeController {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+		(type == "Admin")? person.setUsertype("Admin"): person.setUsertype("Doctor");
 		person.setIsArchived(false);
 		userService.registerPerson(person);
 		return "Saved";
