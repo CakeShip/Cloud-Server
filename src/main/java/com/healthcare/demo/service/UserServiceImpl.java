@@ -28,9 +28,8 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	@Transactional(rollbackOn = Exception.class)
-	public User getPersonByUsernamePassword(String username,String password){
-		User user =  userRepository.findUserByUsernamePassword(username,password);
-		return user;
+	public User getPersonByUsernamePassword(String username, String pass){
+		return userRepository.findByUsernameAndPassword(username, pass);
 	}
 
 	@Override
@@ -55,7 +54,7 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User getPersonById(int id){
-		return userRepository.findPersonById(id); 
+		return userRepository.findById(id); 
 	}
 	
 	@Override
@@ -64,7 +63,9 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User findPersonByName(String name){
-		return userRepository.findPersonDetailsByName(name);
+	public List<User> findPersonByName(String name){
+		String firstname, lastname;
+		firstname=lastname=name;
+		return userRepository.findByFirstNameOrLastName(firstname, lastname);
 	}
 }
