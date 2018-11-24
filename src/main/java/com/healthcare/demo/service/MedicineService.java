@@ -11,5 +11,4 @@ public interface MedicineService {
 	public MedicineModel findById(int id);
 	public MedicineModel deleteById(int id);
 	public MedicineModel updateById(int id, MedicineModel medicineModel);
-	public List<MedicineModel> findByMedicineNameContaining(String medicineName);
 }

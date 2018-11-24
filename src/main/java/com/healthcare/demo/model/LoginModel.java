@@ -2,6 +2,7 @@ package com.healthcare.demo.model;
 
 import lombok.Getter;
 import lombok.Setter;
+
 @Getter
 @Setter
 

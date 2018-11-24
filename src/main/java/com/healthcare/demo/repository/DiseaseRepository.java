@@ -15,11 +15,7 @@ import com.healthcare.demo.model.DiseaseModel;
 public interface DiseaseRepository extends JpaRepository<DiseaseModel, Integer> {
     List<DiseaseModel> findAll();
     DiseaseModel findById(int id);
-    List<DiseaseModel> findByDiseaseNameContaining(String diseaseName);
 
     @Query("UPDATE DiseaseModel u SET u.diseaseName=:#{#update.diseaseName}, u.medicinemodel=:#{#update.medicinemodel} WHERE u.id=(:id)")
     DiseaseModel updateById(@Param("id") int id, @Param("update") DiseaseModel update);
-
-    // @Query("UPDATE DiseaseModel u SET u.isArchived=true WHERE u.id=(:id)")
-	// DiseaseModel deleteById(@Param("id") int id);
 }

@@ -7,6 +7,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
+import javax.persistence.OneToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.JoinColumn;
 
@@ -27,34 +28,33 @@ import lombok.Setter;
 public class MedicalRecordModel {
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id",unique=true, nullable=false)
-	private Integer id; 
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(name = "id", unique = true, nullable = false)
+	private Integer id;
 
 	@Size(max = 255, message = "The patient name should not exceed 255 characters")
-	@Column(name = "Name", nullable = false)
-	private String Name;
+	@Column(name = "name", nullable = false)
+	private String name;
 
-	@Column(name = "Birthday", nullable = false)
-	private Date Birthday;
+	@Column(name = "birthday", nullable = false)
+	private Date birthday;
 
 	@Size(max = 255, message = "The patient name should not exceed 255 characters")
-	@Column(name = "Sex")
-	private String Sex;
+	@Column(name = "sex")
+	private String sex;
 
-	@Column(name = "Admission_Date", nullable = false)
-	private Date Admission_Date;
+	@Column(name = "admissionDate", nullable = false)
+	private Date admissionDate;
 
-	@Column(name = "Discharge_Date")
-	private Date Discharge_Date;
+	@Column(name = "dischargeDate")
+	private Date dischargeDate;
 
-	@ManyToOne
-	@JoinColumn(name = "Diseases", nullable = false)
-	private MedicineModel Diseases;
+	@OneToMany
+    private List<DiseaseModel> diseaseModels;
 
-	@Column(name = "TotalBill", nullable = false)
-	private float TotalBill;
-	
-    @Column(name = "isArchived")
-    private Boolean isArchived;
+	@Column(name = "totalBill", nullable = false)
+	private float totalBill;
+
+	@Column(name = "isArchived")
+	private Boolean isArchived;
 }
