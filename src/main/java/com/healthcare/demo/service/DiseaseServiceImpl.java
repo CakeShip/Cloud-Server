@@ -34,17 +34,22 @@ public class DiseaseServiceImpl implements DiseaseService {
     }
     
 	@Override
-	public List<DiseaseModel> findById(int id) {
+	public DiseaseModel findById(int id) {
 		return diseaseRepository.findById(id);
 	}
+
 	@Override
-	public void deleteById(int id) {
-		diseaseRepository.deleteById(id);
+	public DiseaseModel deleteById(int id) {
+		DiseaseModel model = diseaseRepository.findById(id);
+		model.setIsArchived(true);
+		return model;
 	}
+
 	@Override
 	public DiseaseModel updateById(int id, DiseaseModel update) {
 		return diseaseRepository.updateById(id, update);
 	}
+	
 	@Override
 	public List<DiseaseModel> findByDiseaseNameContaining(String diseaseName) {
 		return diseaseRepository.findByDiseaseNameContaining(diseaseName);

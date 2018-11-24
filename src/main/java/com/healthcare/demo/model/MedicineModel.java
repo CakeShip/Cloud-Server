@@ -4,10 +4,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
 import java.util.List;
 
 import org.hibernate.annotations.Where;
@@ -40,15 +43,5 @@ public class MedicineModel {
     private float price;
     
     @Column(name = "isArchived")
-    private Boolean isArchived;	
-
-    @OneToMany(mappedBy = "medicinemodel",cascade=CascadeType.ALL)
-	@Where(clause="isArchived=false")
-	private List<DiseaseModel> disease;
-
-	public void setMedicines(List<DiseaseModel> disease)
-    {
-    	disease.forEach( entity -> entity.setMedicinemodel(this));
-    	this.disease = disease;
-    }
+    private Boolean isArchived;
 }

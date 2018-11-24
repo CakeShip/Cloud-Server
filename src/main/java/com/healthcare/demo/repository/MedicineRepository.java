@@ -30,7 +30,7 @@ public interface MedicineRepository extends JpaRepository<MedicineModel, Integer
 // 	User findMedicineModelByName(@Param("name") String name);
 
     List<MedicineModel> findAll();
-    List<MedicineModel> findById(int id);
+    MedicineModel findById(int id);
     List<MedicineModel> findByMedicineNameContaining(String medicineName);
     
     @Query("UPDATE MedicineModel u SET u.medicineName=:#{#update.medicineName}, u.price=:#{#update.price} WHERE u.id=(:id)")

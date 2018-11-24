@@ -44,6 +44,14 @@ public class MedicineController {
 		return "Saved";
 	}
 
+	@PostMapping(value = "/delete/{id}") // Map ONLY POST Requests
+	public @ResponseBody String delete( @PathVariable int id) {
+		// @ResponseBody means the returned String is the response, not a view name
+		// @RequestParam means it is a parameter from the GET or POST request
+		medicineService.deleteById(id);
+		return "Saved";
+	}
+
 	@GetMapping(path = "/findAll")
 	public @ResponseBody List<MedicineModel> findAll() {
 		// This returns a JSON or XML with the users
@@ -51,14 +59,8 @@ public class MedicineController {
 	}
 
 	@GetMapping(path = "/{id}")
-	public @ResponseBody List<MedicineModel> id(@PathVariable String id) {
+	public @ResponseBody MedicineModel id(@PathVariable int id) {
 		// This returns a JSON or XML with the users
-		try{
-			Integer.valueOf(id);
-			return medicineService.findById(Integer.parseInt(id));
-		} catch (NumberFormatException e) {
-			
-			return medicineService.findByMedicineNameContaining(id);
-		}
+			return medicineService.findById(id);
 	}
 }

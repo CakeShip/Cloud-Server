@@ -6,9 +6,12 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 import javax.validation.constraints.Size;
+
+import java.util.List;
 
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -33,13 +36,12 @@ public class DiseaseModel {
 	private Integer id; 
 
 	@Size(max = 255, message = "The disease name should not exceed 255 characters")
-	@Column(name = "DiseaseName", nullable = false)
+	@Column(name = "diseaseName", nullable = false)
 	private String diseaseName;	
 
     @Column(name = "isArchived")
 	private Boolean isArchived;
-	
-    @ManyToOne
-	@JoinColumn(name = "medicinemodel")
-    private MedicineModel medicinemodel;
+
+    @OneToMany
+    private List<MedicineModel> medicinemodel;
 }

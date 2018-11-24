@@ -42,6 +42,14 @@ public class DiseaseController {
 		// @RequestParam means it is a parameter from the GET or POST request
 		diseaseService.updateById(id, model);
 		return "Saved";
+    }
+    
+    @PostMapping(value = "/delete/{id}") // Map ONLY POST Requests
+	public @ResponseBody String delete( @PathVariable int id) {
+		// @ResponseBody means the returned String is the response, not a view name
+		// @RequestParam means it is a parameter from the GET or POST request
+		diseaseService.deleteById(id);
+		return "Saved";
 	}
 
 	@GetMapping(path = "/findAll")
@@ -51,14 +59,8 @@ public class DiseaseController {
 	}
 
 	@GetMapping(path = "/{id}")
-	public @ResponseBody List<DiseaseModel> id(@PathVariable String id) {
+	public @ResponseBody DiseaseModel id(@PathVariable int id) {
 		// This returns a JSON or XML with the users
-		try{
-			Integer.valueOf(id);
-			return diseaseService.findById(Integer.parseInt(id));
-		} catch (NumberFormatException e) {
-			
-			return diseaseService.findByDiseaseNameContaining(id);
-		}
+        return diseaseService.findById(id);
 	}
 }

@@ -34,12 +34,14 @@ public class MedicineServiceImpl implements MedicineService {
     }
     
 	@Override
-	public List<MedicineModel> findById(int id) {
+	public MedicineModel findById(int id) {
 		return medicineRepository.findById(id);
 	}
 	@Override
-	public void deleteById(int id) {
-		medicineRepository.deleteById(id);
+	public MedicineModel deleteById(int id) {
+		MedicineModel model = medicineRepository.findById(id);
+		model.setIsArchived(true);
+		return model;
 	}
 	@Override
 	public MedicineModel updateById(int id, MedicineModel update) {
