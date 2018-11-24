@@ -44,6 +44,12 @@ public class MedicalRecordServiceImpl implements MedicalRecordService {
 		medicalRecordRepository.save(model);
 	}
 	@Override
+	public void restoreById(int id) {
+		MedicalRecordModel model = medicalRecordRepository.findById(id);
+		model.setIsArchived(false);
+		medicalRecordRepository.save(model);
+	}
+	@Override
 	public MedicalRecordModel updateById(int id, MedicalRecordModel update) {
 		return medicalRecordRepository.updateById(id, update);
 	}

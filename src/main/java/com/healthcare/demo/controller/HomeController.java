@@ -51,7 +51,6 @@ public class HomeController {
 		return "Saved";
 	}
 
-	//
 	@GetMapping(path = "/getAll")
 	public @ResponseBody List<User> getAllUsers() {
 		return userService.getAll();
@@ -60,6 +59,12 @@ public class HomeController {
 	@PostMapping(path = "/delete/{id}")
 	public @ResponseBody String delete(int id) {
 		userService.deleteUser(id);
+		return "deleted";
+	}
+
+	@PostMapping(path = "/restore/{id}")
+	public @ResponseBody String restore(int id) {
+		userService.restoreUser(id);
 		return "deleted";
 	}
 

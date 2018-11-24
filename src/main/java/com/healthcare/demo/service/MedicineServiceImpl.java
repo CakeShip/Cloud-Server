@@ -44,6 +44,12 @@ public class MedicineServiceImpl implements MedicineService {
 		medicineRepository.save(model);
 	}
 	@Override
+	public void restoreById(int id) {
+		MedicineModel model = medicineRepository.findById(id);
+		model.setIsArchived(false);
+		medicineRepository.save(model);
+	}
+	@Override
 	public MedicineModel updateById(int id, MedicineModel update) {
 		return medicineRepository.updateById(id, update);
 	}

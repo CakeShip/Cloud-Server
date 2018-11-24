@@ -10,5 +10,6 @@ public interface MedicineService {
 	public void addMedicine(MedicineModel medicineModel);
 	public MedicineModel findById(int id);
 	public void deleteById(int id);
+	public void restoreById(int id);
 	public MedicineModel updateById(int id, MedicineModel medicineModel);
 }

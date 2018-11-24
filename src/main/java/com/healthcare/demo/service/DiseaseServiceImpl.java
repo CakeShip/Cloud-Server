@@ -46,6 +46,13 @@ public class DiseaseServiceImpl implements DiseaseService {
 	}
 
 	@Override
+	public void restoreById(int id) {
+		DiseaseModel model = diseaseRepository.findById(id);
+		model.setIsArchived(false);
+		diseaseRepository.save(model);
+	}
+
+	@Override
 	public DiseaseModel updateById(int id, DiseaseModel update) {
 		return diseaseRepository.updateById(id, update);
 	}

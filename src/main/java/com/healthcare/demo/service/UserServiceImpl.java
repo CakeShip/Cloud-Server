@@ -38,8 +38,16 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void deleteUser(int id){
-		User model = UserRepository.findById(id);
+		User model = userRepository.findById(id);
 		model.setIsArchived(true);
+		userRepository.save(model);
+	}
+
+	@Override
+	public void restoreUser(int id){
+		User model = userRepository.findById(id);
+		model.setIsArchived(false);
+		userRepository.save(model);
 	}
 
 	@Override
