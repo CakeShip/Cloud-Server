@@ -1,6 +1,7 @@
 package com.healthcare.demo.controller;
 
 import java.util.List;
+import java.security.MessageDigest;
 
 import javax.validation.Valid;
 
@@ -58,7 +59,7 @@ public class HomeController {
 	}
 
 	@PostMapping(path = "/delete/{id}")
-	public @ResponseBody String delete(int id) {
+	public @ResponseBody String delete(@PathVariable int id) {
 		userService.deleteUser(id);
 		return "deleted";
 	}
@@ -69,7 +70,7 @@ public class HomeController {
 	}
 
 	@PostMapping(path = "/update/{id}")
-	public @ResponseBody User update(@RequestBody User person, @PathVariable int id) {
+	public @ResponseBody Integer update(@RequestBody User person, @PathVariable int id) {
 		return userService.updatePersonById(id, person);
 	}
 

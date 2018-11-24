@@ -2,6 +2,7 @@ package com.healthcare.demo.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
@@ -19,7 +20,8 @@ public interface UserRepository extends JpaRepository<User, Integer> {
 	User findByUsernameAndPassword(String username, String password);
 	User findById(int id);
 
+	@Modifying
 	// User findPersonById(int id, User update_person);
 	@Query("UPDATE User u SET u.username=:#{#update_person.username},u.password=:#{#update_person.password},u.email=:#{#update_person.email},u.firstName=:#{#update_person.firstName},u.lastName=:#{#update_person.lastName} WHERE u.id=(:id)")
-	User updatePersonDetailsById(@Param("id") int id, @Param("update_person") User update_person);
+	Integer updatePersonDetailsById(@Param("id") int id, @Param("update_person") User update_person);
 }

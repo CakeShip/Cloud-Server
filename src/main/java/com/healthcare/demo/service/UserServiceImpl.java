@@ -2,7 +2,6 @@ package com.healthcare.demo.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +12,7 @@ import com.healthcare.demo.repository.*;
 
 @Service
 public class UserServiceImpl implements UserService {
+	private User dummyModel;
 
 	@Autowired
 	private UserRepository userRepository;
@@ -38,18 +38,20 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void deleteUser(int id){
-		User model = UserRepository.findById(id);
+		User model = userRepository.findById(id);
 		model.setIsArchived(true);
+		userRepository.save(model);
 	}
 
 	@Override
 	public User getPersonById(int id){
 		return userRepository.findById(id); 
 	}
-	
+
 	@Override
-	public User updatePersonById(int id, User model){
-		return userRepository.updatePersonDetailsById(id, model); 
+	@Transactional(rollbackOn = Exception.class)
+	public Integer updatePersonById(int id, User model){
+		return userRepository.updatePersonDetailsById(id, model);
 	}
 
 	@Override

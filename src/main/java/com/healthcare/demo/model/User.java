@@ -64,19 +64,19 @@ public class User {
 	@NotEmpty
 	@Size(min = 2, message = "Username should at least have 2 characters")
 	@Size(max = 15, message = "Username should not exceed 15 characters")
-	@Column(name = "username", nullable = false, updatable = false)
+	@Column(name = "username", nullable = false, updatable = true)
 	private String username;
 
 	@NotEmpty
 	@Size(min = 2, message = "UserType should at least have 2 characters")
 	@Size(max = 15, message = "UserType should not exceed 15 characters")
-	@Column(name = "usertype", nullable = false, updatable = false)
+	@Column(name = "usertype", nullable = false, updatable = true)
 	private String usertype;
 
 	@NotEmpty
 	@Size(min = 2, message = "Password should at least have 2 characters")
 	@Size(max = 15, message = "Password should not exceed 15 characters")
-	@Column(name = "password", nullable = false, updatable = false)
+	@Column(name = "password", nullable = false, updatable = true)
 	private String password;
 
 	@NotNull
