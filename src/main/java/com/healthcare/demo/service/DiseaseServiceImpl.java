@@ -39,10 +39,17 @@ public class DiseaseServiceImpl implements DiseaseService {
 	}
 
 	@Override
-	public DiseaseModel deleteById(int id) {
+	public void deleteById(int id) {
 		DiseaseModel model = diseaseRepository.findById(id);
 		model.setIsArchived(true);
-		return model;
+		diseaseRepository.save(model);
+	}
+
+	@Override
+	public void restoreById(int id) {
+		DiseaseModel model = diseaseRepository.findById(id);
+		model.setIsArchived(false);
+		diseaseRepository.save(model);
 	}
 
 	@Override

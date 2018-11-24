@@ -45,6 +45,12 @@ public class MedicalRecordController {
         return "Saved";
     }
 
+    @PostMapping(value = "/restore/{id}")
+    public @ResponseBody String restore(@PathVariable int id) {
+        medicalRecordServiceImpl.restoreById(id);
+        return "Saved";
+    }
+
     @GetMapping(path = "/findAll")
     public @ResponseBody List<MedicalRecordModel> findAll() {
         return medicalRecordServiceImpl.findAll();

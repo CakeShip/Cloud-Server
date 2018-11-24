@@ -12,5 +12,6 @@ public interface UserService {
 	public User getPersonById(int id);
 	public void deleteUser(int id);
 	public Integer updatePersonById(int id, User model);
+	public void restoreUser(int id);
 	public List<User> findPersonByName(String name);
 }

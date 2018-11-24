@@ -38,10 +38,16 @@ public class MedicalRecordServiceImpl implements MedicalRecordService {
 		return medicalRecordRepository.findById(id);
 	}
 	@Override
-	public MedicalRecordModel deleteById(int id) {
+	public void deleteById(int id) {
 		MedicalRecordModel model = medicalRecordRepository.findById(id);
 		model.setIsArchived(true);
-		return model;
+		medicalRecordRepository.save(model);
+	}
+	@Override
+	public void restoreById(int id) {
+		MedicalRecordModel model = medicalRecordRepository.findById(id);
+		model.setIsArchived(false);
+		medicalRecordRepository.save(model);
 	}
 	@Override
 	public MedicalRecordModel updateById(int id, MedicalRecordModel update) {

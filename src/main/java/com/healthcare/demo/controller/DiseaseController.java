@@ -45,6 +45,12 @@ public class DiseaseController {
 		return "Saved";
 	}
 
+	@PostMapping(value = "/restore/{id}")
+	public @ResponseBody String restore(@PathVariable int id) {
+		diseaseService.restoreById(id);
+		return "Saved";
+	}
+
 	@GetMapping(path = "/findAll")
 	public @ResponseBody List<DiseaseModel> findAll() {
 		return diseaseService.findAll();
