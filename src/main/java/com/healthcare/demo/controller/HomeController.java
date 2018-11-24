@@ -1,7 +1,10 @@
 package com.healthcare.demo.controller;
 
 import java.util.List;
-import java.security.MessageDigest;
+import javax.crypto.Cipher;
+import javax.crypto.KeyGenerator;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.SecretKey;
 
 import javax.validation.Valid;
 
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.healthcare.demo.model.*;
 import com.healthcare.demo.service.UserServiceImpl;
+import com.healthcare.demo.service.EncryptFiles;
 
 @RestController
 @RequestMapping("/users")
@@ -35,6 +39,13 @@ public class HomeController {
 	@PostMapping("/login")
 	public @ResponseBody User login(@RequestParam("username") String username,
 			@RequestParam("password") String password) {
+		try{
+			EncryptFiles enc = new EncryptFiles();
+			String encrypted=enc.encrypt(password);
+			password = encrypted;
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		return userService.getPersonByUsernamePassword(username, password);
 	}
 
@@ -46,8 +57,15 @@ public class HomeController {
 
 	@PostMapping(value = "/register")
 	public @ResponseBody String register(@RequestBody User person) {
+
+		try{
+			EncryptFiles enc = new EncryptFiles();
+			String encrypted=enc.encrypt(person.getPassword());
+			person.setPassword(encrypted);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		person.setIsArchived(false);
-		person.setUsertype("Admin");
 		userService.registerPerson(person);
 		return "Saved";
 	}
