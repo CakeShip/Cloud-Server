@@ -64,10 +64,14 @@ public class HomeController {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		(type == "Admin")? person.setUsertype("Admin"): person.setUsertype("Doctor");
+		if("admin".equals(type.toString())){
+		    person.setUsertype("admin");
+		}else{
+			person.setUsertype("doctor");
+		} 
 		person.setIsArchived(false);
 		userService.registerPerson(person);
-		return "Saved";
+		return type;
 	}
 
 	@GetMapping(path = "/getAll")
