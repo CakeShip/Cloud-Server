@@ -106,7 +106,7 @@ public class HomeController {
 		try{
 			EncryptFiles enc = new EncryptFiles();
 			String encrypted=enc.encrypt(person.getPassword());
-			person.setPassword(encrypted) 
+			person.setPassword(encrypted);
 		}catch(Exception e){
 			e.printStackTrace();
 		}

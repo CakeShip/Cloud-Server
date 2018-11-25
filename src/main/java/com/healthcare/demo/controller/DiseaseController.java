@@ -38,14 +38,14 @@ public class DiseaseController {
 		return "Saved";
 	}
 
-	@PostMapping(value = "/update")
-	public @ResponseBody String update(@RequestParam("id") int id, @RequestBody DiseaseModel model) {
+	@PostMapping(value = "/update/{id}")
+	public @ResponseBody String update(@PathVariable int id, @RequestBody DiseaseModel model) {
 		diseaseService.updateById(id, model);
 		return "Saved";
 	}
 
-	@PostMapping(value = "/restore")
-	public @ResponseBody String restore(@RequestParam("id") int id) {
+	@PostMapping(value = "/restore/{id}")
+	public @ResponseBody String restore(@PathVariable int id) {
 		diseaseService.restoreById(id);
 		return "Saved";
 	}
@@ -65,8 +65,8 @@ public class DiseaseController {
 		return diseaseService.findByDiseaseNameContaining(name);
 	}
 
-	@PostMapping(value = "/med/delete")
-	public @ResponseBody String deleteMedById(@RequestParam("dis_id") int dis_id, @RequestParam("med_id") int med_id) {
+	@PostMapping(value = "/med/delete/{dis_id}/{med_id}")
+	public @ResponseBody String deleteMedById(@PathVariable("dis_id") int dis_id, @PathVariable("med_id") int med_id) {
 		diseaseService.deleteMediById(dis_id, med_id);
 		return "deleted";
 	}	
