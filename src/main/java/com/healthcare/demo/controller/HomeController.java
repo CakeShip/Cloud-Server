@@ -91,8 +91,8 @@ public class HomeController {
 		return userService.getAllUserType(type);
 	}
 
-	@PostMapping(path = "/delete/{id}")
-	public @ResponseBody String delete(@PathVariable int id) {
+	@PostMapping(path = "/delete")
+	public @ResponseBody String delete(@RequestParam('id') int id) {
 		userService.deleteUser(id);
 		return "deleted";
 	}
