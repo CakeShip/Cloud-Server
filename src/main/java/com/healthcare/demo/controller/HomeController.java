@@ -98,7 +98,7 @@ public class HomeController {
 	}
 
 	@PostMapping(path = "/restore/{id}")
-	public @ResponseBody String restore(int id) {
+	public @ResponseBody String restore(@PathVariable int id) {
 		userService.restoreUser(id);
 		return "Re-created";
 	}
