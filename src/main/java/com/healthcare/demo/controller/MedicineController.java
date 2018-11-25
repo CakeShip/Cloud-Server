@@ -62,7 +62,7 @@ public class MedicineController {
 	}
 
 	@GetMapping(path = "/{id}")
-	public @ResponseBody MedicineModel id(@PathVariable int id) {
+	public @ResponseBody MedicineModel id(@PathVariable("id") int id) {
 		return medicineService.findById(id);
 	}
 

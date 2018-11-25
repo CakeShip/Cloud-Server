@@ -90,8 +90,8 @@ public class HomeController {
 		return userService.getAllUserType(type);
 	}
 
-	@PostMapping(path = "/restore")
-	public @ResponseBody String restore(@RequestParam("id") int id) {
+	@PostMapping(path = "/restore/{id}")
+	public @ResponseBody String restore(@PathVariable int id) {
 		userService.restoreUser(id);
 		return "Re-created";
 	}
@@ -102,7 +102,14 @@ public class HomeController {
 	}
 
 	@PostMapping(path = "/update/{id}")
-	public @ResponseBody Integer update(@RequestBody User person, @PathVariable("id") int id) {
+	public @ResponseBody Integer update(@RequestBody User person, @PathVariable int id) {
+		try{
+			EncryptFiles enc = new EncryptFiles();
+			String encrypted=enc.encrypt(person.getPassword());
+			person.setPassword(encrypted) 
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		return userService.updatePersonById(id, person);
 	}
 
