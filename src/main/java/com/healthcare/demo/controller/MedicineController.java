@@ -39,15 +39,8 @@ public class MedicineController {
 	}
 
 	@PostMapping(value = "/update/{id}")
-	public @ResponseBody String update(@PathVariable int id, @RequestBody MedicineModel model) {
-		medicineService.updateById(id, model);
-		return "Saved";
-	}
-
-	@PostMapping(value = "/delete/{id}")
-	public @ResponseBody String delete(@PathVariable int id) {
-		medicineService.deleteById(id);
-		return "Saved";
+	public @ResponseBody Integer update(@PathVariable int id, @RequestBody MedicineModel model) {
+		return medicineService.updateById(id, model);
 	}
 
 	@PostMapping(value = "/restore/{id}")

@@ -39,12 +39,6 @@ public class MedicalRecordController {
         return "Saved";
     }
 
-    @PostMapping(value = "/delete/{id}")
-    public @ResponseBody String delete(@PathVariable int id) {
-        medicalRecordServiceImpl.deleteById(id);
-        return "Saved";
-    }
-
     @PostMapping(value = "/restore/{id}")
     public @ResponseBody String restore(@PathVariable int id) {
         medicalRecordServiceImpl.restoreById(id);

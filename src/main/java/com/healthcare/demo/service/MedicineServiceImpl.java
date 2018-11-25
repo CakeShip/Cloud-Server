@@ -54,6 +54,7 @@ public class MedicineServiceImpl implements MedicineService {
 		medicineRepository.save(model);
 	}
 	@Override
+	@Transactional(rollbackOn = Exception.class)
 	public Integer updateById(int id, MedicineModel update) {
 		return medicineRepository.updateById(id, update);
 	}
