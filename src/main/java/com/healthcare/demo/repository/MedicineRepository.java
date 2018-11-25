@@ -16,10 +16,7 @@ import com.healthcare.demo.model.MedicineModel;
 public interface MedicineRepository extends JpaRepository<MedicineModel, Integer> {
     List<MedicineModel> findAll();
     MedicineModel findById(int id);
-
-    
-    @Query("SELECT medicines FROM DiseaseModel  WHERE  DiseaseModel.id=(:id)")
-    List<MedicineModel> findMedicinesById(@Param("id") int id);
+    List<MedicineModel> findByMedicineNameContaining(String medicineName);
 
     @Modifying
     @Query("UPDATE MedicineModel u SET u.medicineName=:#{#update.medicineName}, u.price=:#{#update.price} WHERE u.id=(:id)")

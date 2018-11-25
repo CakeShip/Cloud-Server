@@ -53,4 +53,9 @@ public class MedicalRecordServiceImpl implements MedicalRecordService {
 	public Integer updateById(int id, MedicalRecordModel update) {
 		return medicalRecordRepository.updateById(id, update);
 	}
+
+	@Override
+	public List<MedicalRecordModel> findByNameContaining(String name) {
+		return medicalRecordRepository.findByNameContaining(name);
+	}
 }

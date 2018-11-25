@@ -58,7 +58,7 @@ public class DiseaseServiceImpl implements DiseaseService {
 	}
 
 	@Override
-	public List<DiseaseModel> findbyDiseaseName(String diseaseName){
-		return diseaseRepository.findByDiseaseName(diseaseName);
+	public List<DiseaseModel> findByDiseaseNameContaining(String diseaseName){
+		return diseaseRepository.findByDiseaseNameContaining(diseaseName);
 	}
 }

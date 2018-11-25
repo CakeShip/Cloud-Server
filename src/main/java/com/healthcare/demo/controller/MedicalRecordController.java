@@ -60,4 +60,9 @@ public class MedicalRecordController {
     public @ResponseBody MedicalRecordModel id(@PathVariable int id) {
         return medicalRecordServiceImpl.findById(id);
     }
+
+    @GetMapping(path = "/search/{name}")
+	public @ResponseBody List<MedicalRecordModel> search(@PathVariable String name) {
+		return medicalRecordServiceImpl.findByNameContaining(name);
+	}
 }

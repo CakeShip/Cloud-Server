@@ -68,11 +68,6 @@ public class DiseaseController {
 
 	@GetMapping(path = "/search/{name}")
 	public @ResponseBody List<DiseaseModel> findByName(@PathVariable String name) {
-		return diseaseService.findbyDiseaseName(name);
-	}
-
-	@GetMapping(path = "/med/{id}")
-	public @ResponseBody List<MedicineModel> med(@PathVariable int id) {
-		return medicineService.findMedicinesById(id);
+		return diseaseService.findByDiseaseNameContaining(name);
 	}
 }

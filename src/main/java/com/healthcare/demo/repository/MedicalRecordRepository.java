@@ -16,6 +16,7 @@ import com.healthcare.demo.model.*;
 public interface MedicalRecordRepository extends JpaRepository<MedicalRecordModel, Integer> {
 	List<MedicalRecordModel> findAll();
     MedicalRecordModel findById(int id);
+    List<MedicalRecordModel> findByNameContaining(String name);
 
     @Modifying
 	@Query("UPDATE MedicalRecordModel u SET u.name=:#{#update.name},u.birthday=:#{#update.birthday},u.sex=:#{#update.sex},u.admissionDate=:#{#update.admissionDate},u.dischargeDate=:#{#update.dischargeDate}, u.totalBill=:#{#update.totalBill} WHERE u.id=(:id)")
