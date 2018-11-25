@@ -62,9 +62,13 @@ public class MedicineController {
 	}
 
 	@GetMapping(path = "/search/{name}")
-	public @ResponseBody List<MedicineModel> search(@PathVariable String name) {
-		return medicineService.findByMedicineNameContaining(name);
-	}
+    public @ResponseBody List<MedicalRecordModel> search(@PathVariable String name) {
+        if("*".equals(name)){
+            return medicalRecordServiceImpl.findAll();
+        } else {
+            return medicalRecordServiceImpl.findByNameContaining(name);
+        }
+    }
 
 	@PostMapping(value = "/delete/{id}")
 	public @ResponseBody String deletemag(@PathVariable int id) {
