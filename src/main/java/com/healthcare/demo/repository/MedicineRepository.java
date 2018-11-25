@@ -18,7 +18,7 @@ public interface MedicineRepository extends JpaRepository<MedicineModel, Integer
     MedicineModel findById(int id);
 
     
-    @Query("SELECT medicines FROM DiseaseModel  WHERE  DiseaseModel.id=(:id)")
+    @Query("SELECT x,y.medicineName FROM DiseaseModel x INNER JOIN x.medicinemodel y WHERE x.id=(:id)")
     List<MedicineModel> findMedicinesById(@Param("id") int id);
 
     @Modifying
