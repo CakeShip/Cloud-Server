@@ -53,4 +53,11 @@ public class MedicineServiceImpl implements MedicineService {
 	public Integer updateById(int id, MedicineModel update) {
 		return medicineRepository.updateById(id, update);
 	}
+
+	@Override
+	public List<MedicineModel> findMedicinesById(int id) {
+		List<MedicineModel> list = new ArrayList<>();
+		medicineRepository.findAll().iterator().forEachRemaining(list::add);
+		return list;
+	}
 }

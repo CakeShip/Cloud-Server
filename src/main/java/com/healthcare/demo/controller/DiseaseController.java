@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.healthcare.demo.model.DiseaseModel;
+import com.healthcare.demo.model.MedicineModel;
 import com.healthcare.demo.service.DiseaseServiceImpl;
+import com.healthcare.demo.service.MedicineServiceImpl;
 
 @RestController
 @RequestMapping("/diseases")
@@ -25,6 +27,9 @@ public class DiseaseController {
 
 	@Autowired
 	private DiseaseServiceImpl diseaseService;
+
+	@Autowired
+	private MedicineServiceImpl medicineService;
 
 	@PostMapping(value = "/add")
 	public @ResponseBody String add(@RequestBody DiseaseModel model) {
@@ -64,5 +69,10 @@ public class DiseaseController {
 	@GetMapping(path = "/search/{name}")
 	public @ResponseBody List<DiseaseModel> findByName(@PathVariable String name) {
 		return diseaseService.findbyDiseaseName(name);
+	}
+
+	@GetMapping(path = "/med/{id}")
+	public @ResponseBody List<MedicineModel> med(@PathVariable int id) {
+		return medicineService.findMedicinesById(id);
 	}
 }

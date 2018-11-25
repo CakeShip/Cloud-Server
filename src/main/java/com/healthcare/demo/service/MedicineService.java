@@ -12,4 +12,5 @@ public interface MedicineService {
 	public void deleteById(int id);
 	public void restoreById(int id);
 	public Integer updateById(int id, MedicineModel medicineModel);
+	public List<MedicineModel> findMedicinesById(int id);
 }
