@@ -59,7 +59,6 @@ public class HomeController {
 			e.printStackTrace();
 		}
 		return userService.getPersonByUsernamePassword(loginCredentials.getUsername(), loginCredentials.getPassword());
-
 	}
 
 	@PostMapping(value = "/register/{type}")
@@ -91,12 +90,6 @@ public class HomeController {
 		return userService.getAllUserType(type);
 	}
 
-	@PostMapping(path = "/delete")
-	public @ResponseBody String delete(@RequestParam("id") int id) {
-		userService.deleteUser(id);
-		return "deleted";
-	}
-
 	@PostMapping(path = "/restore")
 	public @ResponseBody String restore(@RequestParam("id") int id) {
 		userService.restoreUser(id);
@@ -108,8 +101,8 @@ public class HomeController {
 		return userService.getPersonById(id);
 	}
 
-	@PostMapping(path = "/update")
-	public @ResponseBody Integer update(@RequestBody User person, @RequestParam("id") int id) {
+	@PostMapping(path = "/update/{id}")
+	public @ResponseBody Integer update(@RequestBody User person, @PathVariable("id") int id) {
 		return userService.updatePersonById(id, person);
 	}
 
@@ -121,7 +114,7 @@ public class HomeController {
 	@PostMapping(value = "/delete/{id}")
 	public @ResponseBody String deletemag(@PathVariable int id) {
 		userService.deleteUser(id);
-		return "Saved";
+		return "deleted";
 	}
 
 }

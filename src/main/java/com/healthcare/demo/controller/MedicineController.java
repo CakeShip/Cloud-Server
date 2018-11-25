@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.healthcare.demo.model.MedicineModel;
+import com.healthcare.demo.model.MedicalRecordModel;
 import com.healthcare.demo.service.MedicineServiceImpl;
+import com.healthcare.demo.service.MedicalRecordServiceImpl;
 
 @RestController
 @RequestMapping("/medicines")
@@ -25,6 +27,9 @@ public class MedicineController {
 
 	@Autowired
 	private MedicineServiceImpl medicineService;
+	@Autowired
+	private MedicalRecordServiceImpl medicalRecordServiceImpl;
+	
 
 	@PostMapping(value = "/add")
 	public @ResponseBody String add(@RequestBody MedicineModel model) {
