@@ -23,7 +23,11 @@ public class MedicalRecordServiceImpl implements MedicalRecordService {
 	@Override
 	public List<MedicalRecordModel> findAll() {
 		List<MedicalRecordModel> list = new ArrayList<>();
-		medicalRecordRepository.findAll().iterator().forEachRemaining(list::add);
+		medicalRecordRepository.findAll().iterator().forEachRemaining(x -> {
+			if(!(x.getIsArchived())){
+				list.add(x);
+			}
+		});
 		return list;
 	}
     

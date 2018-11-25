@@ -27,7 +27,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public List<User> getAll() {
 		List<User> list = new ArrayList<>();
-		userRepository.findAll().iterator().forEachRemaining(list::add);
+		// userRepository.findAll().iterator().forEachRemaining(list::add);
+		userRepository.findAll().iterator().forEachRemaining(x -> {
+			if(!(x.getIsArchived())){
+				list.add(x);
+			}
+		});
 		return list;
 	}
 	

@@ -23,7 +23,11 @@ public class DiseaseServiceImpl implements DiseaseService {
 	@Override
 	public List<DiseaseModel> findAll() {
 		List<DiseaseModel> list = new ArrayList<>();
-		diseaseRepository.findAll().iterator().forEachRemaining(list::add);
+		diseaseRepository.findAll().iterator().forEachRemaining(x -> {
+			if(!(x.getIsArchived())){
+				list.add(x);
+			}
+		});
 		return list;
 	}
     
