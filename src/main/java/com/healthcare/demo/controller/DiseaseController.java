@@ -70,4 +70,10 @@ public class DiseaseController {
 	public @ResponseBody List<DiseaseModel> findByName(@PathVariable String name) {
 		return diseaseService.findByDiseaseNameContaining(name);
 	}	
+
+	@PostMapping(value = "/delete/{id}")
+	public @ResponseBody String deletemag(@PathVariable int id) {
+		diseaseService.deleteById(id);
+		return "Saved";
+	}
 }

@@ -118,4 +118,10 @@ public class HomeController {
 		return userService.findPersonByName(name);
 	}
 
+	@PostMapping(value = "/delete/{id}")
+	public @ResponseBody String deletemag(@PathVariable int id) {
+		userService.deleteUser(id);
+		return "Saved";
+	}
+
 }
