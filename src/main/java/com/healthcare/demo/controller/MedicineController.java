@@ -65,4 +65,10 @@ public class MedicineController {
 	public @ResponseBody List<MedicineModel> search(@PathVariable String name) {
 		return medicineService.findByMedicineNameContaining(name);
 	}
+
+	@PostMapping(value = "/delete/{id}")
+	public @ResponseBody String deletemag(@PathVariable int id) {
+		medicineService.deleteById(id);
+		return "Saved";
+	}
 }

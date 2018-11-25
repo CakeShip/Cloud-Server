@@ -64,5 +64,11 @@ public class MedicalRecordController {
     @GetMapping(path = "/search/{name}")
 	public @ResponseBody List<MedicalRecordModel> search(@PathVariable String name) {
 		return medicalRecordServiceImpl.findByNameContaining(name);
+    }
+    
+    @PostMapping(value = "/delete/{id}")
+	public @ResponseBody String deletemag(@PathVariable int id) {
+		medicalRecordServiceImpl.deleteById(id);
+		return "Saved";
 	}
 }

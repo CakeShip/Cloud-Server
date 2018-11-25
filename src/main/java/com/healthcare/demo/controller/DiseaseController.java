@@ -44,12 +44,6 @@ public class DiseaseController {
 		return "Saved";
 	}
 
-	@PostMapping(value = "/delete")
-	public @ResponseBody String delete(@RequestParam("id") int id) {
-		diseaseService.deleteById(id);
-		return "Saved";
-	}
-
 	@PostMapping(value = "/restore")
 	public @ResponseBody String restore(@RequestParam("id") int id) {
 		diseaseService.restoreById(id);
@@ -75,6 +69,11 @@ public class DiseaseController {
 	public @ResponseBody String deleteMedById(@RequestParam("dis_id") int dis_id, @RequestParam("med_id") int med_id) {
 		diseaseService.deleteMediById(dis_id, med_id);
 		return "deleted";
-	}
+	}	
 
+	@PostMapping(value = "/delete/{id}")
+	public @ResponseBody String deletemag(@PathVariable int id) {
+		diseaseService.deleteById(id);
+		return "Saved";
+	}
 }
