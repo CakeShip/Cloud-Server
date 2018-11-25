@@ -97,8 +97,8 @@ public class HomeController {
 		return "deleted";
 	}
 
-	@PostMapping(path = "/restore/{id}")
-	public @ResponseBody String restore(@PathVariable int id) {
+	@PostMapping(path = "/restore")
+	public @ResponseBody String restore(@RequestParam('id') int id) {
 		userService.restoreUser(id);
 		return "Re-created";
 	}
@@ -108,8 +108,8 @@ public class HomeController {
 		return userService.getPersonById(id);
 	}
 
-	@PostMapping(path = "/update/{id}")
-	public @ResponseBody Integer update(@RequestBody User person, @PathVariable int id) {
+	@PostMapping(path = "/update")
+	public @ResponseBody Integer update(@RequestBody User person, @RequestParam("id") int id) {
 		return userService.updatePersonById(id, person);
 	}
 
