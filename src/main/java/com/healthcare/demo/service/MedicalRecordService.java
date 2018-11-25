@@ -12,4 +12,5 @@ public interface MedicalRecordService {
 	public void deleteById(int id);
 	public void restoreById(int id);
 	public Integer updateById(int id, MedicalRecordModel diseaseModel);
+	public List<MedicalRecordModel> findByNameContaining(String name);
 }
