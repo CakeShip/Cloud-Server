@@ -11,6 +11,7 @@ import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.healthcare.demo.model.DiseaseModel;
+import com.healthcare.demo.model.MedicineModel;
 
 @Repository
 public interface DiseaseRepository extends JpaRepository<DiseaseModel, Integer> {
@@ -21,4 +22,8 @@ public interface DiseaseRepository extends JpaRepository<DiseaseModel, Integer> 
     @Modifying
     @Query("UPDATE DiseaseModel u SET u.diseaseName=:#{#update.diseaseName}, u.medicinemodel=:#{#update.medicinemodel} WHERE u.id=(:id)")
     Integer updateById(@Param("id") int id, @Param("update") DiseaseModel update);
+
+    @Modifying
+    @Query("DELETE FROM DiseaseModel u WHERE u.id=(:dis_id) AND u.medicinemodel=(:med)")
+    Integer deleteMedicineById(@Param("dis_id") int dis_id, @Param("med") MedicineModel med);
 }

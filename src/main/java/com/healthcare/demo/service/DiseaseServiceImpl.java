@@ -9,7 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.healthcare.demo.model.DiseaseModel;
+import com.healthcare.demo.model.MedicineModel;
 import com.healthcare.demo.repository.DiseaseRepository;
+import com.healthcare.demo.repository.MedicineRepository;
 import com.healthcare.demo.service.DiseaseService;
 
 @Service
@@ -64,5 +66,18 @@ public class DiseaseServiceImpl implements DiseaseService {
 	@Override
 	public List<DiseaseModel> findByDiseaseNameContaining(String diseaseName){
 		return diseaseRepository.findByDiseaseNameContaining(diseaseName);
+	}
+
+	@Override
+	public void deleteMediById(int dis_id, int id){
+		DiseaseModel dis = diseaseRepository.findById(dis_id);
+		MedicineModel med = new MedicineModel();
+		for(MedicineModel m :dis.getMedicinemodel()){
+			if(m.getId() == id){
+				med = m;
+			}
+		}
+		dis.getMedicinemodel().remove(med);
+		diseaseRepository.save(dis);
 	}
 }

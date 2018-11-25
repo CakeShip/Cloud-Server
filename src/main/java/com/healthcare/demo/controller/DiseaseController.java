@@ -45,7 +45,7 @@ public class DiseaseController {
 	}
 
 	@PostMapping(value = "/delete")
-	public @ResponseBody String delete(@RequestParam("id") Integer id) {
+	public @ResponseBody String delete(@RequestParam("id") int id) {
 		diseaseService.deleteById(id);
 		return "Saved";
 	}
@@ -69,5 +69,12 @@ public class DiseaseController {
 	@GetMapping(path = "/search/{name}")
 	public @ResponseBody List<DiseaseModel> findByName(@PathVariable String name) {
 		return diseaseService.findByDiseaseNameContaining(name);
-	}	
+	}
+
+	@PostMapping(value = "/med/delete")
+	public @ResponseBody String deleteMedById(@RequestParam("dis_id") int dis_id, @RequestParam("med_id") int med_id) {
+		diseaseService.deleteMediById(dis_id, med_id);
+		return "deleted";
+	}
+
 }

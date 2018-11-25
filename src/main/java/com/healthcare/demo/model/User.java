@@ -30,7 +30,7 @@ public class User {
 
 	public User(Integer id, @NotEmpty String email,
 			@NotEmpty @Size(min = 2, message = "Username should at least have 2 characters") @Size(max = 15, message = "Username should not exceed 15 characters") String username,
-			@NotEmpty @Size(min = 2, message = "Password should at least have 2 characters") @Size(max = 15, message = "Password should not exceed 15 characters") String password,
+			@NotEmpty @Size(min = 2, message = "Password should at least have 2 characters") String password,
 			@NotNull @NotEmpty @Size(min = 2, message = "First Name should at least have 2 characters") @Size(max = 15, message = "FirstName should not exceed 15 characters") String firstName,
 			@NotEmpty @NotEmpty @Size(min = 2, message = "Last Name should at least have 2 characters") @Size(max = 15, message = "Last Name should not exceed 15 characters") String usertype,
 			@NotNull @NotEmpty @Size(min = 2, message = "Last Name should at least have 2 characters") @Size(max = 15, message = "Last Name should not exceed 15 characters") String lastName) {
@@ -47,7 +47,7 @@ public class User {
 
 	public User(
 			@NotEmpty @Size(min = 2, message = "Username should at least have 2 characters") @Size(max = 15, message = "Username should not exceed 15 characters") String username,
-			@NotEmpty @Size(min = 2, message = "Password should at least have 2 characters") @Size(max = 15, message = "Password should not exceed 15 characters") String password) {
+			@NotEmpty @Size(min = 2, message = "Password should at least have 2 characters") @Size(max = 15, message = "Password should not exceed 255 characters") String password) {
 		super();
 		this.username = username;
 		this.password = password;
@@ -75,7 +75,6 @@ public class User {
 
 	@NotEmpty
 	@Size(min = 2, message = "Password should at least have 2 characters")
-	@Size(max = 15, message = "Password should not exceed 15 characters")
 	@Column(name = "password", nullable = false, updatable = true)
 	private String password;
 
