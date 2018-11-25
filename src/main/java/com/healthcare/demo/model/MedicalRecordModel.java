@@ -8,7 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import javax.persistence.OneToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 import javax.persistence.JoinColumn;
 
 import org.hibernate.annotations.DynamicInsert;
@@ -37,19 +37,19 @@ public class MedicalRecordModel {
 	private String name;
 
 	@Column(name = "birthday", nullable = false)
-	private Date birthday;
+	private String birthday;
 
 	@Size(max = 255, message = "The patient name should not exceed 255 characters")
 	@Column(name = "sex")
 	private String sex;
 
 	@Column(name = "admissionDate", nullable = false)
-	private Date admissionDate;
+	private String admissionDate;
 
 	@Column(name = "dischargeDate")
-	private Date dischargeDate;
+	private String dischargeDate;
 
-	@OneToMany
+	@ManyToMany
     private List<DiseaseModel> diseaseModels;
 
 	@Column(name = "totalBill", nullable = false)
