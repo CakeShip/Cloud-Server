@@ -20,5 +20,5 @@ public interface MedicineRepository extends JpaRepository<MedicineModel, Integer
 
     @Modifying
     @Query("UPDATE MedicineModel u SET u.medicineName=:#{#update.medicineName}, u.price=:#{#update.price} WHERE u.id=(:id)")
-    Integer updateById(@Param("id") int id, @Param("update") MedicineModel update);
+    Integer updateMedicineById(@Param("id") int id, @Param("update") MedicineModel update);
 }

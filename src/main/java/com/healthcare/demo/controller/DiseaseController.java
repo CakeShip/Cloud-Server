@@ -39,9 +39,8 @@ public class DiseaseController {
 	}
 
 	@PostMapping(value = "/update/{id}")
-	public @ResponseBody String update(@PathVariable int id, @RequestBody DiseaseModel model) {
-		diseaseService.updateById(id, model);
-		return "Saved";
+	public @ResponseBody Integer update(@PathVariable int id, @RequestBody DiseaseModel model) {
+		return diseaseService.updateById(id, model);
 	}
 
 	@PostMapping(value = "/restore/{id}")

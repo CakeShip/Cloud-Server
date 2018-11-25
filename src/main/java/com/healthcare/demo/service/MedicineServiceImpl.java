@@ -56,7 +56,7 @@ public class MedicineServiceImpl implements MedicineService {
 	@Override
 	@Transactional(rollbackOn = Exception.class)
 	public Integer updateById(int id, MedicineModel update) {
-		return medicineRepository.updateById(id, update);
+		return medicineRepository.updateMedicineById(id, update);
 	}
 	@Override
 	public List<MedicineModel> findByMedicineNameContaining(String medicineName) {
