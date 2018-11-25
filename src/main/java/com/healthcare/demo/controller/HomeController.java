@@ -51,6 +51,13 @@ public class HomeController {
 
 	@PostMapping("/authenticate")
 	public @ResponseBody User authenticate(@RequestBody LoginModel loginCredentials) {
+		try{
+			EncryptFiles enc = new EncryptFiles();
+			String encrypted=enc.encrypt(loginCredentials.getPassword());
+			loginCredentials.setPassword(encrypted);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 		return userService.getPersonByUsernamePassword(loginCredentials.getUsername(), loginCredentials.getPassword());
 
 	}
