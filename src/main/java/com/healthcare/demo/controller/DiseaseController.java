@@ -39,19 +39,19 @@ public class DiseaseController {
 	}
 
 	@PostMapping(value = "/update")
-	public @ResponseBody String update(@RequestParam('id') int id, @RequestBody DiseaseModel model) {
+	public @ResponseBody String update(@RequestParam("id") int id, @RequestBody DiseaseModel model) {
 		diseaseService.updateById(id, model);
 		return "Saved";
 	}
 
 	@PostMapping(value = "/delete")
-	public @ResponseBody String delete(@RequestParam('id') int id) {
+	public @ResponseBody String delete(@RequestParam("id") Integer id) {
 		diseaseService.deleteById(id);
 		return "Saved";
 	}
 
 	@PostMapping(value = "/restore")
-	public @ResponseBody String restore(@RequestParam('id') int id) {
+	public @ResponseBody String restore(@RequestParam("id") int id) {
 		diseaseService.restoreById(id);
 		return "Saved";
 	}

@@ -92,13 +92,13 @@ public class HomeController {
 	}
 
 	@PostMapping(path = "/delete")
-	public @ResponseBody String delete(@RequestParam('id') int id) {
+	public @ResponseBody String delete(@RequestParam("id") int id) {
 		userService.deleteUser(id);
 		return "deleted";
 	}
 
 	@PostMapping(path = "/restore")
-	public @ResponseBody String restore(@RequestParam('id') int id) {
+	public @ResponseBody String restore(@RequestParam("id") int id) {
 		userService.restoreUser(id);
 		return "Re-created";
 	}

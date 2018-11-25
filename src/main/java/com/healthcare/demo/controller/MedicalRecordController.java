@@ -34,19 +34,19 @@ public class MedicalRecordController {
     }
 
     @PostMapping(value = "/update")
-    public @ResponseBody String update(@RequestParam('id') int id, @RequestBody MedicalRecordModel model) {
+    public @ResponseBody String update(@RequestParam("id") int id, @RequestBody MedicalRecordModel model) {
         medicalRecordServiceImpl.updateById(id, model);
         return "Saved";
     }
 
     @PostMapping(value = "/delete")
-    public @ResponseBody String delete(@RequestParam('id') int id) {
+    public @ResponseBody String delete(@RequestParam("id") int id) {
         medicalRecordServiceImpl.deleteById(id);
         return "Saved";
     }
 
     @PostMapping(value = "/restore")
-    public @ResponseBody String restore(@RequestParam('id') int id) {
+    public @ResponseBody String restore(@RequestParam("id") int id) {
         medicalRecordServiceImpl.restoreById(id);
         return "Saved";
     }
